@@ -28,7 +28,7 @@ const DemoCard = ({ title, location, timestamp, tags }: DemoCardProps) => {
       </CardContent>
       <CardFooter>
         {tags.map((tag) => (
-          <p>{tag}</p>
+          <p key={tag}>{tag}</p>
         ))}
       </CardFooter>
     </Card>
