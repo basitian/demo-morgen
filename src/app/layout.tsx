@@ -3,6 +3,9 @@ import './globals.css';
 import { Inter as FontSans } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Toaster } from '@/components/ui/sonner';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -27,7 +30,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <Navbar />
+        <main className="mx-auto w-full max-w-5xl">{children}</main>
+        <Footer />
+        <Toaster />
       </body>
     </html>
   );

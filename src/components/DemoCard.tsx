@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import {
   Card,
   CardContent,
@@ -6,31 +7,91 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-
-import React from 'react';
+import { format, formatDistance, endOfDay, isSameDay } from 'date-fns';
+import { de } from 'date-fns/locale';
+import { Calendar, Clock } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 type DemoCardProps = {
   title: string;
-  location: string;
-  timestamp: Date;
-  tags: string[];
+  place: string;
+  region: string;
+  startAt: Date;
+  endAt: Date;
+  categories: string[];
+  slug: string;
 };
 
-const DemoCard = ({ title, location, timestamp, tags }: DemoCardProps) => {
+const DemoCard = ({
+  title,
+  place,
+  region,
+  startAt,
+  endAt,
+  categories,
+  slug,
+}: DemoCardProps) => {
+  const formatTimeStatus = useCallback((startTs: Date, endTs: Date) => {
+    const now = new Date();
+
+    if (startTs <= now && endTs >= now) {
+      return <p className="text-green-600">laufend</p>;
+    }
+
+    return (
+      <p className="text-muted-foreground">
+        {formatDistance(startTs, now, {
+          locale: de,
+          addSuffix: true,
+        })}
+      </p>
+    );
+  }, []);
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{location}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>{timestamp.toLocaleDateString()}</p>
-      </CardContent>
-      <CardFooter>
-        {tags.map((tag) => (
-          <p key={tag}>{tag}</p>
-        ))}
-      </CardFooter>
+    <Card className="cursor-pointer hover:bg-secondary">
+      <a href={`/demo/${slug}`}>
+        <CardHeader>
+          <CardTitle
+            title={title}
+            className="line-clamp-2"
+          >
+            {title}
+          </CardTitle>
+          <CardDescription>
+            {place !== region ? place + ', ' + region : place}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex gap-2 items-center">
+            <Calendar className="h-4 w-4 text-red-600" />
+            <p>{format(startAt, 'E, dd. MMM yyyy', { locale: de })}</p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <Clock className="h-4 w-4 text-red-600" />
+            <p>
+              {isSameDay(startAt, endAt)
+                ? format(startAt, 'kk:mm', { locale: de }) +
+                  ' - ' +
+                  format(endAt, 'kk:mm', { locale: de })
+                : format(startAt, 'kk:mm', { locale: de })}
+            </p>
+          </div>
+          {formatTimeStatus(startAt, endAt)}
+        </CardContent>
+        <CardFooter>
+          <div className="space-x-1 overflow-x-auto flex">
+            {categories.map((category) => (
+              <Badge
+                key={category}
+                variant="secondary"
+              >
+                {category}
+              </Badge>
+            ))}
+          </div>
+        </CardFooter>
+      </a>
     </Card>
   );
 };

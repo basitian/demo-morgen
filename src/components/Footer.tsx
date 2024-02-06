@@ -49,7 +49,7 @@ const Footer = () => {
             <div className="flex flex-col gap-1">
               <a
                 className="text-gray-500 cursor-pointer hover:underline"
-                href="fragdenstaat.de"
+                href="https://fragdenstaat.de"
               >
                 fragdenstaat.de
               </a>

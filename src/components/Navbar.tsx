@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Plus, Search } from 'lucide-react';
 import { Input } from './ui/input';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -17,16 +18,21 @@ const Navbar = () => {
         </a>
         <div className="flex gap-2">
           <Input
-            className="w-80"
+            className="w-80 rounded-full"
             placeholder="Suche"
           />
-          <Button size="icon">
-            <Search className="h-4 w-4" />
+          <Button
+            size="icon"
+            className="rounded-full -ml-12"
+          >
+            <Search className="h-3 w-3" />
           </Button>
         </div>
-        <Button>
-          <Plus className="mr-2 h-4 w-4" />
-          Demo hinzufügen
+        <Button asChild>
+          <Link href={'/new'}>
+            <Plus className="mr-2 h-4 w-4" />
+            Demo hinzufügen
+          </Link>
         </Button>
       </nav>
     </header>
