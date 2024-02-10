@@ -11,6 +11,7 @@ import { format, formatDistance, endOfDay, isSameDay } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { Calendar, Clock } from 'lucide-react';
 import { Badge } from './ui/badge';
+import { cn } from '@/lib/utils';
 
 type DemoCardProps = {
   title: string;
@@ -20,6 +21,7 @@ type DemoCardProps = {
   endAt: Date;
   categories: string[];
   slug: string;
+  className?: string;
 };
 
 const DemoCard = ({
@@ -30,6 +32,7 @@ const DemoCard = ({
   endAt,
   categories,
   slug,
+  className,
 }: DemoCardProps) => {
   const formatTimeStatus = useCallback((startTs: Date, endTs: Date) => {
     const now = new Date();
@@ -49,16 +52,16 @@ const DemoCard = ({
   }, []);
 
   return (
-    <Card className="cursor-pointer hover:bg-secondary">
+    <Card className={cn('cursor-pointer hover:bg-secondary h-full', className)}>
       <a href={`/demo/${slug}`}>
         <CardHeader>
           <CardTitle
             title={title}
-            className="line-clamp-2"
+            className="line-clamp-2 leading-snug h-16"
           >
             {title}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="line-clamp-1">
             {place !== region ? place + ', ' + region : place}
           </CardDescription>
         </CardHeader>

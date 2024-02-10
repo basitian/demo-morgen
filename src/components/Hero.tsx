@@ -24,17 +24,22 @@ const Hero = () => {
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
           #EhrenamtIstLeidenschaft
         </p>
-        <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-          <Button size={'lg'}>
-            Demo finden
-            <ArrowRight className="ml-2 -mr-1 w-5 h-5" />
+        <div className="flex flex-col lg:mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+          <Button
+            size={'lg'}
+            asChild
+          >
+            <Link href="/suche">
+              Demo finden
+              <ArrowRight className="ml-2 -mr-1 w-5 h-5" />
+            </Link>
           </Button>
           <Button
             variant={'secondary'}
             size={'lg'}
             asChild
           >
-            <Link href={'/new'}>
+            <Link href={'/neu'}>
               <Plus className="mr-2 -ml1 w-5 h-5" />
               Demo hinzufügen
             </Link>

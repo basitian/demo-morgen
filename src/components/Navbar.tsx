@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { Plus, Search } from 'lucide-react';
 import { Input } from './ui/input';
 import Link from 'next/link';
+import { MainNavigation } from './MainNavigation';
 
 const Navbar = () => {
   return (
@@ -16,7 +17,8 @@ const Navbar = () => {
             DMHT
           </span>
         </a>
-        <div className="flex gap-2">
+        <MainNavigation />
+        {/* <div className="flex gap-2">
           <Input
             className="w-80 rounded-full"
             placeholder="Suche"
@@ -27,7 +29,7 @@ const Navbar = () => {
           >
             <Search className="h-3 w-3" />
           </Button>
-        </div>
+        </div> */}
         <Button asChild>
           <Link href={'/new'}>
             <Plus className="mr-2 h-4 w-4" />

@@ -26,12 +26,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased flex flex-col',
           fontSans.variable
         )}
       >
         <Navbar />
-        <main className="mx-auto w-full max-w-5xl">{children}</main>
+        <main className="mx-auto w-full max-w-5xl grow">{children}</main>
         <Footer />
         <Toaster />
       </body>

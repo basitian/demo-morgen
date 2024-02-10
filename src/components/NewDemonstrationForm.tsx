@@ -29,6 +29,9 @@ import { TimePickerInput } from './ui/timepicker';
 import { createDemonstration } from '@/actions/demonstration';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { CategoriesSelector } from './CategoriesSelector';
+import categories from '@/constants/categories';
 
 const NewDemonstrationForm = () => {
   const startMinuteRef = React.useRef<HTMLInputElement>(null);
@@ -139,6 +142,8 @@ const NewDemonstrationForm = () => {
                     onSelect={field.onChange}
                     disabled={(date) => date < startOfDay(new Date())}
                     initialFocus
+                    weekStartsOn={1}
+                    locale={de}
                   />
                   <div className="p-3 border-t border-border">
                     <div className="flex items-end gap-2">
@@ -223,6 +228,8 @@ const NewDemonstrationForm = () => {
                       date < startOfDay(form.getValues().startAt)
                     }
                     initialFocus
+                    weekStartsOn={1}
+                    locale={de}
                   />
                   <div className="p-3 border-t border-border">
                     <div className="flex items-end gap-2">
@@ -270,12 +277,41 @@ const NewDemonstrationForm = () => {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          disabled={form.formState.isSubmitting}
-        >
-          Speichern
-        </Button>
+        <FormField
+          control={form.control}
+          name="categories"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Themen</FormLabel>
+              <FormControl>
+                <CategoriesSelector
+                  selected={field.value}
+                  options={categories}
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>
+                Wähle Themen zu denen demonstriert wird aus
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex gap-2">
+          <Button
+            type="submit"
+            disabled={form.formState.isSubmitting}
+          >
+            Speichern
+          </Button>
+          <Button
+            asChild
+            variant={'secondary'}
+            disabled={form.formState.isSubmitting}
+          >
+            <Link href="/">Abbrechen</Link>
+          </Button>
+        </div>
       </form>
     </Form>
   );

@@ -26,7 +26,7 @@ export async function createDemonstration(data: DemonstrationSchemaType) {
       description,
       startAt,
       endAt,
-      categories,
+      categories: categories.sort(),
       published: false,
       slug: slugify(title),
     },
