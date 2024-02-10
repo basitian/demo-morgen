@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <SearchBar />
-      <div className="my-8">
+      <div className="my-16">
         <h1 className="text-3xl text-primary mb-4">Demnächst</h1>
         <Suspense fallback={<SkeletonCarousel />}>
           <UpcomingDemos />
