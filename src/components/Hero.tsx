@@ -29,7 +29,7 @@ const Hero = () => {
             size={'lg'}
             asChild
           >
-            <Link href="/suche">
+            <Link href="/search">
               Demo finden
               <ArrowRight className="ml-2 -mr-1 w-5 h-5" />
             </Link>
@@ -39,7 +39,7 @@ const Hero = () => {
             size={'lg'}
             asChild
           >
-            <Link href={'/neu'}>
+            <Link href={'/new'}>
               <Plus className="mr-2 -ml1 w-5 h-5" />
               Demo hinzufügen
             </Link>

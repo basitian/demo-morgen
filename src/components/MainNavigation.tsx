@@ -14,26 +14,27 @@ import {
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 import { ScanSearch } from 'lucide-react';
+import { Url } from 'next/dist/shared/lib/router/router';
 
 const components: { title: string; href: string; description: string }[] = [
   {
     title: 'Über',
-    href: '/ueber',
+    href: '/about',
     description: 'Wie funktioniert demoheute.de?',
   },
   {
     title: 'Nutzungsbedingungen',
-    href: '/suche',
+    href: '/search',
     description: 'Bedingungen zur Nutzung der demoheute.de Webseite.',
   },
   {
     title: 'Impressum',
-    href: '/suche',
+    href: '/search',
     description: 'Demonstrationen die grade oder demnächst starten.',
   },
   {
     title: 'Datenschutz',
-    href: '/suche',
+    href: '/search',
     description: 'Alles rund um das Thema Datenschutz auf demoheute.de',
   },
 ];
@@ -48,9 +49,9 @@ export function MainNavigation() {
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/suche"
+                    href="/search"
                   >
                     <ScanSearch className="h-6 w-6" />
                     <div className="mb-2 mt-4 text-lg font-medium">Suche</div>
@@ -58,23 +59,23 @@ export function MainNavigation() {
                       Finde für dich interessante Demonstrationen anhand von
                       Orten, Themen, und Zeiten
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem
-                href="/suche"
+                href="/search"
                 title="Demnächst"
               >
                 Demonstrationen die grade laufen oder demnächst starten
               </ListItem>
               <ListItem
-                href="/suche"
+                href="/search"
                 title="In deiner Nähe"
               >
                 Veranstaltungen in deiner Nähe
               </ListItem>
               <ListItem
-                href="/suche?categories=Gesellschaft"
+                href="/search?categories=Gesellschaft"
                 title="Thema Gesellschaft"
               >
                 Entdecke Demonstrationen zum Thema &quot;Gesellschaft&quot;

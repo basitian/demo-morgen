@@ -27,7 +27,7 @@ const SearchBar = () => {
 
   const searchHandler = (values: SearchSchemaType) => {
     router.push(
-      `/suche?${
+      `/search?${
         values.categories.length > 0
           ? `categories=${values.categories.join(',')}`
           : ''
