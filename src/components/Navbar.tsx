@@ -18,22 +18,10 @@ const Navbar = () => {
           </span>
         </a>
         <MainNavigation />
-        {/* <div className="flex gap-2">
-          <Input
-            className="w-80 rounded-full"
-            placeholder="Suche"
-          />
-          <Button
-            size="icon"
-            className="rounded-full -ml-12"
-          >
-            <Search className="h-3 w-3" />
-          </Button>
-        </div> */}
         <Button asChild>
           <Link href={'/new'}>
             <Plus className="mr-2 h-4 w-4" />
-            Demo hinzufügen
+            Demo einreichen
           </Link>
         </Button>
       </nav>

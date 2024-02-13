@@ -41,7 +41,7 @@ const Hero = () => {
           >
             <Link href={'/new'}>
               <Plus className="mr-2 -ml1 w-5 h-5" />
-              Demo hinzufügen
+              Demo einreichen
             </Link>
           </Button>
         </div>
